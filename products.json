@@ -5,6 +5,7 @@
       "name": "Podonki Podgon",
       "category": "liquids",
       "price": "",
+      "mg": "",
       "items": [
         "Смородина Холлс",
         "Ананасовая Газировка (2 шт)",
@@ -17,6 +18,7 @@
       "name": "Podonki Vintage",
       "category": "liquids",
       "price": "",
+      "mg": "",
       "items": [
         "Брусничный морс",
         "Клубничное мохито",
@@ -28,6 +30,7 @@
       "name": "Рик и Морти bad acid",
       "category": "liquids",
       "price": "",
+      "mg": "",
       "items": [
         "Ананасовый леденцы (2 шт)",
         "Апельсиновый адреналин",
@@ -41,6 +44,7 @@
       "name": "Анархия V2 70мг",
       "category": "liquids",
       "price": "",
+      "mg": "70",
       "items": [
         "Кола сода айс"
       ]
@@ -50,6 +54,7 @@
       "name": "Злая Монашка 70мг",
       "category": "liquids",
       "price": "",
+      "mg": "70",
       "items": [
         "Клубника личи"
       ]
@@ -59,6 +64,7 @@
       "name": "Поды",
       "category": "pods",
       "price": "",
+      "mg": "",
       "items": [
         "Xros mini"
       ]
