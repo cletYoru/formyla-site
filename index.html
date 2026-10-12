@@ -118,6 +118,7 @@ footer strong{color:var(--acid)}
 .prod-name{min-width:0;overflow-wrap:anywhere}
 .prod-price{flex:0 0 auto;color:#cfe6d6;font-weight:700;font-size:.92rem;letter-spacing:-.01em;white-space:nowrap}
 .prod-price .price-value{color:var(--acid);font-weight:800}
+.prod-desc{margin:0 0 12px;color:#cfe6d6;font-size:.88rem;font-weight:650;letter-spacing:.01em}
 .catalog-status{grid-column:1/-1;padding:34px 16px;text-align:center;color:var(--muted);line-height:1.7}
 .catalog-error{grid-column:1/-1;padding:24px 20px;border:1px solid rgba(255,90,90,.35);border-radius:16px;background:rgba(255,60,60,.06);color:#ffd9d9;text-align:center;line-height:1.6}
 </style>
@@ -275,6 +276,15 @@ footer strong{color:var(--acid)}
     return span;
   }
 
+  function mgNode(value){
+    const text = (value === undefined || value === null) ? '' : String(value).trim();
+    if(!text) return null;
+    const desc = document.createElement('p');
+    desc.className = 'prod-desc';
+    desc.textContent = /(мг|mg)/i.test(text) ? text : text + ' мг';
+    return desc;
+  }
+
   function buildGroup(product){
     const section = document.createElement('section');
     section.className = 'catalog-group';
@@ -286,6 +296,8 @@ footer strong{color:var(--acid)}
     heading.appendChild(name);
     heading.appendChild(priceNode(product.price));
     section.appendChild(heading);
+    const desc = mgNode(product.mg);
+    if(desc) section.appendChild(desc);
     const list = document.createElement('ul');
     (Array.isArray(product.items) ? product.items : []).forEach(item => {
       const li = document.createElement('li');
