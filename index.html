@@ -1,0 +1,99 @@
+<body>
+<header class="site-header">
+  <a class="brand" href="#home" data-page="home" aria-label="Formyla — главная">Formyla</a>
+  <nav class="nav" aria-label="Главная навигация">
+    <a class="nav-link primary" href="#buy" data-page="buy">Купить <span aria-hidden="true">↗</span></a>
+    <a class="nav-link" href="#about" data-page="about">О нас</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page active" id="home" aria-labelledby="home-title">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Твой выбор. Твой ритм.</div>
+        <h1 id="home-title"><span>Form</span>yla</h1>
+        <p class="lead">Не только магазин товаров для вейпа — мы позитивная и отзывчивая команда. Больше удобства: не нужно никуда ехать или подстраиваться под график торговой точки. Оформить заказ можно из дома, в удобный для вас момент.</p>
+        <div class="hero-actions">
+          <a class="cta cta-main" href="#buy" data-page="buy">Перейти к покупке <span aria-hidden="true">↗</span></a>
+          <a class="cta cta-ghost" href="#about" data-page="about">Познакомиться с нами</a>
+        </div>
+      </div>
+      <div class="visual" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="glass-card">
+          <div class="card-top"><span>FORMYLA / ONLINE</span><span class="dot"></span></div>
+          <div class="card-symbol">F.</div>
+          <div class="card-bottom"><strong>Выбирай свободно</strong><span>01 / 03</span></div>
+        </div>
+        <div class="floating-label">На связи, когда удобно</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="buy" aria-labelledby="buy-title">
+    <div class="section-head">
+      <div class="eyebrow">Покупка без лишних шагов</div>
+      <h2 id="buy-title">Оформим заказ<br><span style="color:var(--acid)">вместе.</span></h2>
+      <p class="section-copy">Для оформления заказа временно обратитесь к нашим менеджерам. Они помогут с выбором и подскажут дальнейшие шаги.</p>
+    </div>
+    <div class="content-panel catalog-panel">
+      <div class="catalog">
+        <div class="catalog-heading"><span class="eyebrow">Ассортимент</span><h3>Товар</h3></div>
+        <div class="catalog-filter">
+          <button class="filter-toggle" type="button" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">
+            <svg class="funnel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+            <span>Фильтр</span>
+            <span class="filter-caret" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+          <div class="filter-panel" id="filterPanel" role="group" aria-label="Категории товаров">
+            <div class="filter-options">
+              <button class="filter-chip" type="button" data-filter="all">Все</button>
+              <button class="filter-chip" type="button" data-filter="pods">Поды</button>
+              <button class="filter-chip" type="button" data-filter="liquids">Жидкости</button>
+              <button class="filter-chip" type="button" data-filter="vaporizers">Испарители</button>
+            </div>
+          </div>
+        </div>
+        <div class="catalog-grid" id="catalogGrid" aria-live="polite"></div>
+        <div class="catalog-empty" id="catalogEmpty">
+          <strong>В этой категории пока нет товаров</strong>
+          <span>Загляните позже или выберите другую категорию.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-panel team-panel">
+      <div class="catalog-heading team-heading"><span class="eyebrow">На связи</span><h3>Наша команда</h3></div>
+      <p><strong>Свяжитесь с нашей командой</strong> в Telegram — выберите удобный контакт ниже.</p>
+      <div class="managers">
+        <a class="manager" href="https://t.me/YasLov03" target="_blank" rel="noopener noreferrer">
+          <span><small>Команда Formyla</small><strong>Владелец</strong></span><span class="manager-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="manager" href="https://t.me/hollegy" target="_blank" rel="noopener noreferrer">
+          <span><small>Команда Formyla</small><strong>Совладелец</strong></span><span class="manager-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="notice"><span class="notice-mark">i</span><span>Перед оформлением заказа убедитесь, что приобретение и использование выбранной продукции разрешено законом в вашем регионе. Продажа продукции, содержащей никотин, — только совершеннолетним.</span></div>
+    </div>
+  </section>
+
+  <section class="page" id="about" aria-labelledby="about-title">
+    <div class="section-head">
+      <div class="eyebrow">Команда Formyla</div>
+      <h2 id="about-title">Мы рядом,<br><span style="color:var(--acid)">если нужны.</span></h2>
+    </div>
+    <div class="about-top">Наши сотрудники добрые и отзывчивые. При возникновении проблемы — пишите нам!</div>
+    <div class="content-panel">
+      <p>Мы строго следим за качеством и гарантируем <strong>оригинальность всей продукции</strong>, представленной в каталоге.</p>
+      <p>Продуманный интерфейс сайта, подробные описания товаров и удобные фильтры позволяют сделать выбор за считанные минуты.</p>
+      <p>Нас ценят за быструю и надёжную доставку, регулярные скидки и добрую, отзывчивую команду, которая всегда готова оперативно помочь с выбором и ответить на любые вопросы.</p>
+      <div class="hero-actions"><a class="cta cta-main" href="https://t.me/hollegy" target="_blank" rel="noopener noreferrer">Связаться с совладельцем <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span><strong>Formyla</strong> — выбор в твоём ритме</span>
+  <span>© <span id="year"></span> Formyla</span>
+</footer>
