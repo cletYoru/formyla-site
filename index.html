@@ -30,8 +30,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--acid);outline-offse
 .nav-link.primary:hover{background:linear-gradient(135deg,rgba(168,255,67,.14),rgba(255,255,255,.025));border-color:rgba(168,255,67,.62)}
 main{width:min(1160px,calc(100% - 40px));margin:0 auto}
 .page{display:none;min-height:calc(100vh - 85px);padding:clamp(64px,9vw,124px) 0 84px;opacity:0}
-.page.active{display:block;animation:pageEnter .95s cubic-bezier(.16,1,.3,1) both}
-.page.active .hero-copy>* ,.page.active .section-head>* ,.page.active .content-panel,.page.active .about-top,.page.active .visual,.page.active .team-panel{animation:elementEnter .85s cubic-bezier(.16,1,.3,1) both}
+.page.active{display:block;animation:pageEnter 1.8s cubic-bezier(.16,1,.3,1) both}
+.page.active .hero-copy>* ,.page.active .section-head>* ,.page.active .content-panel,.page.active .about-top,.page.active .visual,.page.active .team-panel{animation:elementEnter 1.45s cubic-bezier(.16,1,.3,1) both}
 .page.active .hero-copy>*:nth-child(1),.page.active .section-head>*:nth-child(1){animation-delay:.08s}
 .page.active .hero-copy>*:nth-child(2),.page.active .section-head>*:nth-child(2){animation-delay:.16s}
 .page.active .hero-copy>*:nth-child(3),.page.active .section-head>*:nth-child(3){animation-delay:.24s}
@@ -39,7 +39,7 @@ main{width:min(1160px,calc(100% - 40px));margin:0 auto}
 .page.active .visual{animation-delay:.2s}
 .page.active .content-panel{animation-delay:.12s}
 .page.active .team-panel{animation-delay:.22s}
-.page.active .manager,.page.active .catalog-group{animation:elementEnter .72s cubic-bezier(.16,1,.3,1) both}
+.page.active .manager,.page.active .catalog-group{animation:elementEnter 1.25s cubic-bezier(.16,1,.3,1) both}
 .page.active .manager:nth-child(1){animation-delay:.12s}
 .page.active .manager:nth-child(2){animation-delay:.22s}
 .page.active .catalog-group:nth-child(1){animation-delay:.06s}
