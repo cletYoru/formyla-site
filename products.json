@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "id": "podonki-podgon",
+      "name": "Podonki Podgon",
+      "category": "liquids",
+      "price": "",
+      "items": [
+        "Смородина Холлс",
+        "Ананасовая Газировка (2 шт)",
+        "Апельсин",
+        "Кокос Малина"
+      ]
+    },
+    {
+      "id": "podonki-vintage",
+      "name": "Podonki Vintage",
+      "category": "liquids",
+      "price": "",
+      "items": [
+        "Брусничный морс",
+        "Клубничное мохито",
+        "Мармеладный джин (2 шт)"
+      ]
+    },
+    {
+      "id": "rick-morty-bad-acid",
+      "name": "Рик и Морти bad acid",
+      "category": "liquids",
+      "price": "",
+      "items": [
+        "Ананасовый леденцы (2 шт)",
+        "Апельсиновый адреналин",
+        "Виноград Лайм",
+        "Яблоко Клубника",
+        "Яблоко Лайм"
+      ]
+    },
+    {
+      "id": "anarchy-v2-70",
+      "name": "Анархия V2 70мг",
+      "category": "liquids",
+      "price": "",
+      "items": [
+        "Кола сода айс"
+      ]
+    },
+    {
+      "id": "zlaya-monashka-70",
+      "name": "Злая Монашка 70мг",
+      "category": "liquids",
+      "price": "",
+      "items": [
+        "Клубника личи"
+      ]
+    },
+    {
+      "id": "pods",
+      "name": "Поды",
+      "category": "pods",
+      "price": "",
+      "items": [
+        "Xros mini"
+      ]
+    }
+  ]
+}
