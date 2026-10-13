@@ -54,6 +54,9 @@ concurrency:
 
 jobs:
   telegram:
+    # The workflow commits its encrypted state/inventory. Ignore those bot-authored pushes
+    # so they cannot recursively trigger another sync run.
+    if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
