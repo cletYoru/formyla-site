@@ -108,7 +108,7 @@ async function sendMessage(chatId, text, withButton) {
   }
 }
 
-const WELCOME = "Добро пожаловать в Formyla!\n\nЗдесь будут появляться уведомления о пополнении ассортимента. Чтобы отключить уведомления, отправь /stop.";
+const WELCOME = "Приветствуем в Formyla Shop!";
 
 async function pollUpdates(state) {
   const updates = await telegram("getUpdates", {
