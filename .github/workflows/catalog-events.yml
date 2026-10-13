@@ -8,40 +8,48 @@ on:
       - "inventory.json"
   workflow_dispatch:
     inputs:
-      event_type:
-        description: "sale or restock"
+      mode:
+        description: "Choose poll to process Telegram messages or event to process a sale/restock"
         required: true
+        type: choice
+        default: poll
+        options:
+          - poll
+          - event
+      event_type:
+        description: "sale or restock (only for event mode)"
+        required: false
         type: choice
         options:
           - sale
           - restock
       event_id:
-        description: "Unique event ID (used to prevent duplicate processing)"
-        required: true
+        description: "Unique event ID (only for event mode)"
+        required: false
         type: string
       product_id:
-        description: "Product ID from products.json"
-        required: true
+        description: "Product ID from products.json (only for event mode)"
+        required: false
         type: string
       product_name:
-        description: "Product display name (validated against catalog)"
-        required: true
+        description: "Product display name (only for event mode)"
+        required: false
         type: string
       variant:
-        description: "Exact flavor / product item"
-        required: true
+        description: "Exact flavor / product item (only for event mode)"
+        required: false
         type: string
       category:
-        description: "Product category"
-        required: true
+        description: "Product category (only for event mode)"
+        required: false
         type: choice
         options:
           - liquids
           - pods
           - vaporizers
       quantity:
-        description: "Units sold or restocked"
-        required: true
+        description: "Units sold or restocked (only for event mode)"
+        required: false
         default: "1"
         type: string
 
@@ -79,7 +87,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           BOT_STATE_KEY: ${{ secrets.BOT_STATE_KEY }}
-          BOT_MODE: ${{ github.event_name == 'schedule' && 'poll' || (github.event_name == 'push' && 'sync' || 'event') }}
+          BOT_MODE: ${{ github.event_name == 'schedule' && 'poll' || (github.event_name == 'push' && 'sync' || (inputs.mode == 'poll' && 'poll' || 'event')) }}
           EVENT_TYPE: ${{ inputs.event_type }}
           EVENT_ID: ${{ inputs.event_id }}
           PRODUCT_ID: ${{ inputs.product_id }}
