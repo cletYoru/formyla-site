@@ -1,0 +1,94 @@
+{
+  "items": [
+    {
+      "productId": "podonki-podgon",
+      "productName": "Podonki Podgon",
+      "variant": "Смородина Холлс",
+      "quantity": 0
+    },
+    {
+      "productId": "podonki-podgon",
+      "productName": "Podonki Podgon",
+      "variant": "Ананасовая Газировка (2 шт)",
+      "quantity": 0
+    },
+    {
+      "productId": "podonki-podgon",
+      "productName": "Podonki Podgon",
+      "variant": "Апельсин",
+      "quantity": 0
+    },
+    {
+      "productId": "podonki-podgon",
+      "productName": "Podonki Podgon",
+      "variant": "Кокос Малина",
+      "quantity": 0
+    },
+    {
+      "productId": "podonki-vintage",
+      "productName": "Podonki Vintage",
+      "variant": "Брусничный морс",
+      "quantity": 0
+    },
+    {
+      "productId": "podonki-vintage",
+      "productName": "Podonki Vintage",
+      "variant": "Клубничное мохито",
+      "quantity": 0
+    },
+    {
+      "productId": "podonki-vintage",
+      "productName": "Podonki Vintage",
+      "variant": "Мармеладный джин (2 шт)",
+      "quantity": 0
+    },
+    {
+      "productId": "rick-morty-bad-acid",
+      "productName": "Рик и Морти bad acid",
+      "variant": "Ананасовый леденцы (2 шт)",
+      "quantity": 0
+    },
+    {
+      "productId": "rick-morty-bad-acid",
+      "productName": "Рик и Морти bad acid",
+      "variant": "Апельсиновый адреналин",
+      "quantity": 0
+    },
+    {
+      "productId": "rick-morty-bad-acid",
+      "productName": "Рик и Морти bad acid",
+      "variant": "Виноград Лайм",
+      "quantity": 0
+    },
+    {
+      "productId": "rick-morty-bad-acid",
+      "productName": "Рик и Морти bad acid",
+      "variant": "Яблоко Клубника",
+      "quantity": 0
+    },
+    {
+      "productId": "rick-morty-bad-acid",
+      "productName": "Рик и Морти bad acid",
+      "variant": "Яблоко Лайм",
+      "quantity": 0
+    },
+    {
+      "productId": "anarchy-v2-70",
+      "productName": "Анархия V2 70мг",
+      "variant": "Кола сода айс",
+      "quantity": 0
+    },
+    {
+      "productId": "zlaya-monashka-70",
+      "productName": "Злая Монашка 70мг",
+      "variant": "Клубника личи",
+      "quantity": 0
+    },
+    {
+      "productId": "pods",
+      "productName": "Поды",
+      "variant": "Xros mini",
+      "quantity": 0
+    }
+  ]
+}
