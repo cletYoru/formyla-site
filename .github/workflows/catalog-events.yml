@@ -109,5 +109,9 @@ jobs:
           git add -- .bot/state.enc inventory.json
           if ! git diff --cached --quiet; then
             git commit -m "Update encrypted Telegram state and inventory"
-            git push
+            # Another workflow or the admin dashboard may update main while the bot runs.
+            # Rebase our commit on the latest remote before pushing to avoid non-fast-forward failures.
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
