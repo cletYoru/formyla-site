@@ -3,6 +3,9 @@ name: Telegram bot and catalog events
 on:
   schedule:
     - cron: "*/5 * * * *"
+  push:
+    paths:
+      - "inventory.json"
   workflow_dispatch:
     inputs:
       event_type:
@@ -56,11 +59,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check required secrets
+        id: guard
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          STATE_KEY: ${{ secrets.BOT_STATE_KEY }}
+        run: |
+          if [ -z "$BOT_TOKEN" ] || [ -z "$STATE_KEY" ]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Add TELEGRAM_BOT_TOKEN and BOT_STATE_KEY to repository Actions secrets to enable the bot." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Run bot
+        if: steps.guard.outputs.enabled == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           BOT_STATE_KEY: ${{ secrets.BOT_STATE_KEY }}
-          BOT_MODE: ${{ github.event_name == 'schedule' && 'poll' || 'event' }}
+          BOT_MODE: ${{ github.event_name == 'schedule' && 'poll' || (github.event_name == 'push' && 'sync' || 'event') }}
           EVENT_TYPE: ${{ inputs.event_type }}
           EVENT_ID: ${{ inputs.event_id }}
           PRODUCT_ID: ${{ inputs.product_id }}
@@ -68,9 +84,12 @@ jobs:
           VARIANT: ${{ inputs.variant }}
           CATEGORY: ${{ inputs.category }}
           QUANTITY: ${{ inputs.quantity }}
+          BASE_SHA: ${{ github.event.before }}
+          GITHUB_SHA: ${{ github.sha }}
           SITE_URL: "https://cletyoru.github.io/formyla-site/#buy"
         run: node scripts/telegram-bot.mjs
       - name: Persist encrypted bot state and inventory
+        if: steps.guard.outputs.enabled == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
