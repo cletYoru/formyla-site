@@ -243,7 +243,7 @@ async function processCatalogEvent(state) {
 async function syncInventory(state) {
   const commitSha = process.env.GITHUB_SHA || "";
   const eventId = "push-" + commitSha;
-  if (!/^[a-fA-F0-9-]{8,80}$/.test(eventId) || state.processedEvents.includes(eventId)) {
+  if (!/^[a-zA-Z0-9_-]{8,80}$/.test(eventId) || state.processedEvents.includes(eventId)) {
     console.log("Inventory push already processed or has no valid commit ID.");
     return false;
   }
