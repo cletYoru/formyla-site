@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const KEY_HEX = process.env.BOT_STATE_KEY || "";
@@ -239,6 +240,61 @@ async function processCatalogEvent(state) {
   return true;
 }
 
+async function syncInventory(state) {
+  const commitSha = process.env.GITHUB_SHA || "";
+  const eventId = "push-" + commitSha;
+  if (!/^[a-fA-F0-9-]{8,80}$/.test(eventId) || state.processedEvents.includes(eventId)) {
+    console.log("Inventory push already processed or has no valid commit ID.");
+    return false;
+  }
+  let previous = { items: [] };
+  const baseSha = process.env.BASE_SHA || "";
+  if (baseSha && !/^0+$/.test(baseSha)) {
+    try {
+      const raw = execFileSync("git", ["show", baseSha + ":inventory.json"], { encoding: "utf8" });
+      previous = JSON.parse(raw);
+    } catch (_) {
+      previous = { items: [] };
+    }
+  }
+  const current = await readJson(INVENTORY_PATH, { items: [] });
+  const catalogFile = await readJson(PRODUCTS_PATH, { products: [] });
+  const catalog = Array.isArray(catalogFile) ? catalogFile : catalogFile.products;
+  const oldMap = new Map();
+  (Array.isArray(previous.items) ? previous.items : []).forEach((item) => {
+    oldMap.set(String(item.productId) + "\\u0000" + String(item.variant), Number(item.quantity) || 0);
+  });
+  let increases = 0;
+  for (const item of (Array.isArray(current.items) ? current.items : [])) {
+    const key = String(item.productId) + "\\u0000" + String(item.variant);
+    const oldQuantity = oldMap.has(key) ? oldMap.get(key) : 0;
+    const newQuantity = Number(item.quantity) || 0;
+    if (newQuantity <= oldQuantity) continue;
+    const product = Array.isArray(catalog) ? catalog.find((p) => String(p.id) === String(item.productId)) : null;
+    if (!product) continue;
+    const variant = String(item.variant || "");
+    let message;
+    if (String(product.category) === "liquids") {
+      message = "Пополнение товара «" + String(product.name || item.productName || item.productId) + "»\\nВкус: " + variant + "\\nВ наличии: " + newQuantity;
+    } else {
+      message = "Пополнение товара «" + variant + "»\\nВ наличии: " + newQuantity;
+    }
+    for (const chatId of state.subscribers) {
+      try {
+        await sendMessage(chatId, message, true);
+      } catch (error) {
+        if (error.status === 403) state.subscribers = state.subscribers.filter((id) => id !== chatId);
+        else console.error("A restock notification could not be delivered to one subscriber:", error.message);
+      }
+    }
+    increases += 1;
+  }
+  state.processedEvents.push(eventId);
+  state.processedEvents = state.processedEvents.slice(-500);
+  console.log("Inventory push processed; restocked variants:", increases);
+  return true;
+}
+
 const loaded = await readEncryptedState();
 const state = loaded.state;
 const before = JSON.stringify(state);
@@ -247,6 +303,8 @@ if (MODE === "poll") {
   await pollUpdates(state);
 } else if (MODE === "event") {
   inventoryChanged = await processCatalogEvent(state);
+} else if (MODE === "sync") {
+  await syncInventory(state);
 } else {
   throw new Error("Unknown BOT_MODE.");
 }
