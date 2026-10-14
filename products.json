@@ -40,7 +40,7 @@
     },
     {
       "id": "anarchy-v2-70",
-      "name": "Анархия V2 70мг",
+      "name": "Анархия V2",
       "category": "liquids",
       "price": "490",
       "mg": "70",
@@ -50,21 +50,13 @@
     },
     {
       "id": "zlaya-monashka-70",
-      "name": "Злая Монашка 70мг",
+      "name": "Злая Монашка",
       "category": "liquids",
       "price": "500",
       "mg": "70",
       "items": [
         "Клубника личи"
       ]
-    },
-    {
-      "id": "pods",
-      "name": "Поды",
-      "category": "pods",
-      "price": "1500",
-      "mg": "",
-      "items": []
     },
     {
       "id": "duall-zlaya-monashka",
